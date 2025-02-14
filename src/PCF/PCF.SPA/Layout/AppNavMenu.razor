@@ -2,6 +2,10 @@
     <MudNavLink Icon="@Icons.Material.Filled.Home" Href="/home" Match="NavLinkMatch.All">Home</MudNavLink>
     <MudNavLink Icon="@Icons.Material.Filled.Category" Href="/categorias" Match="NavLinkMatch.Prefix">Categorias</MudNavLink>
     <MudNavLink Icon="@Icons.Material.Filled.MonetizationOn" Href="/orcamentos" Match="NavLinkMatch.Prefix">Orçamentos</MudNavLink>
+    <MudNavGroup Icon="@Icons.Material.Filled.Report" Title="Relatórios">
+        <MudNavLink Href="/reports/orcamentos" Match="NavLinkMatch.Prefix">Orçado x Realizado</MudNavLink>
+        <MudNavLink Href="/reports/transacoes" Match="NavLinkMatch.Prefix">Transações</MudNavLink>
+    </MudNavGroup>
     <MudNavLink Icon="@Icons.Material.Filled.Logout" OnClick="OnLogoutClicked">Sair</MudNavLink>
 </MudNavMenu>
 
