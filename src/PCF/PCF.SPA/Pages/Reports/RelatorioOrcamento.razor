@@ -8,7 +8,7 @@
 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LoadOrcamentosAsync">Gerar Relatório</MudButton>
 </div>
 <MudContainer>
-    <MudDataGrid T="OrcamentoResponseViewModel" Items="_orcamentos" Loading="_loading" Hover="true" Bordered="true" SortMode="SortMode.Single" Striped="true" Filterable="true" EditMode="DataGridEditMode.Form" ReadOnly="false">
+    <MudDataGrid T="OrcamentoResponseViewModel" Items="_relatorioOrcamento" Loading="_loading" Hover="true" Bordered="true" SortMode="SortMode.Single" Striped="true" Filterable="true" EditMode="DataGridEditMode.Form" ReadOnly="false">
         <Columns>
             <PropertyColumn Property="x => x.NomeUsuario" Title="Usuário" Editable="false" />
             <PropertyColumn Property="x => x.NomeCategoria" Title="Categoria" Editable="false" Required="false" />

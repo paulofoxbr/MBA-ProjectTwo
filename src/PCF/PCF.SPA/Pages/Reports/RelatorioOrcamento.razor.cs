@@ -5,7 +5,7 @@ namespace PCF.SPA.Pages.Reports
 {
     public partial class RelatorioOrcamento
     {
-        private IEnumerable<OrcamentoResponseViewModel> _orcamentos = new List<OrcamentoResponseViewModel>(); // Initialize the list
+        private IEnumerable<RelatorioOrcamentoResponse> _relatorioOrcamento = new List<RelatorioOrcamentoResponse>(); // Initialize the list
         private IEnumerable<TransacaoResponse> _transacao = new List<TransacaoResponse>(); // Initialize the list
         private bool _loading = true;
         private DateTime? _dataInicial = DateTime.Today.AddDays(-1);
@@ -25,7 +25,7 @@ namespace PCF.SPA.Pages.Reports
             _loading = true;
             try
             {
-                _orcamentos = await WebApiClient.OrcamentosAllAsync();
+                _relatorioOrcamento = await WebApiClient.RelatoriosAsync(_dataInicial,_dataFinal);
 
             }
             catch (Exception ex)

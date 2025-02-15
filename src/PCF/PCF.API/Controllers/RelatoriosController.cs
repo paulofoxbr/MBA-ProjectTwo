@@ -9,15 +9,15 @@ using PCF.Shared.Dtos;
 namespace PCF.API.Controllers;
 
 [Route("api/relatorios")]
-public class RelatoriosController(ITransacaoService TransacaoService) : ApiControllerBase
+public class RelatoriosController(IRelatorioService relatorioService) : ApiControllerBase
 {
 
 
     [HttpGet]
-    public async Task<Ok<IEnumerable<TransacaoResponse>>> GetOrcamentoRealizado()
+    public async Task<Ok<IEnumerable<RelatorioOrcamentoResponse>>> GetOrcamentoRealizado(DateTime dataIncial,DateTime dataFinal)
     {
-        var list = await TransacaoService.GetAllAsync();
+        var list = await relatorioService.GetOrcamentoRealizado(dataIncial,dataFinal);
 
-        return TypedResults.Ok(list.Adapt<IEnumerable<TransacaoResponse>>());
+        return TypedResults.Ok(list.Adapt<IEnumerable<RelatorioOrcamentoResponse>>());
     }
 }
