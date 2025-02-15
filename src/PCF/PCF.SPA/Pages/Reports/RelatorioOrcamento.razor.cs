@@ -6,15 +6,18 @@ namespace PCF.SPA.Pages.Reports
     public partial class RelatorioOrcamento
     {
         private IEnumerable<OrcamentoResponseViewModel> _orcamentos = new List<OrcamentoResponseViewModel>(); // Initialize the list
+        private IEnumerable<TransacaoResponse> _transacao = new List<TransacaoResponse>(); // Initialize the list
         private bool _loading = true;
+        private DateTime? _dataInicial = DateTime.Today.AddDays(-1);
+        private DateTime? _dataFinal = DateTime.Today;
 
-        [Inject] private IWebApiClient WebApiClient { get; set; } // Correct the inject syntax
-        [Inject] private IDialogService DialogService { get; set; } // Correct the inject syntax
-        [Inject] private ISnackbar Snackbar { get; set; } // Correct the inject syntax
+        [Inject] private IWebApiClient WebApiClient { get; set; } 
+        [Inject] private IDialogService DialogService { get; set; } 
+        [Inject] private ISnackbar Snackbar { get; set; } 
 
         protected override async Task OnInitializedAsync()
         {
-            await LoadOrcamentosAsync();
+           // await LoadOrcamentosAsync();
         }
 
         private async Task LoadOrcamentosAsync()
@@ -23,6 +26,7 @@ namespace PCF.SPA.Pages.Reports
             try
             {
                 _orcamentos = await WebApiClient.OrcamentosAllAsync();
+
             }
             catch (Exception ex)
             {

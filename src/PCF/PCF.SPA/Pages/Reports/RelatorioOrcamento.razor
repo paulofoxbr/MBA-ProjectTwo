@@ -2,20 +2,12 @@
 @attribute [Authorize]
 
 <PageTitle>Relatório de Orçamentos</PageTitle>
+<div class="d-flex justify-end" style="border: 1px solid #ccc; padding: 10px;">
+ <MudDatePicker Label="Data Inicial" @bind-Date="_dataInicial" DateFormat="dd/MM/yyyy"/>
+ <MudDatePicker Label="Data Final" @bind-Date="_dataFinal" Format="dd/MM/yyyy" />
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LoadOrcamentosAsync">Gerar Relatório</MudButton>
+</div>
 <MudContainer>
-    <MudPaper>
-        <MudGrid>
-            <MudItem xs="12" md="6">
-                <MudDatePicker Label="Data Inicial" Format="dd/MM/yyyy" />
-            </MudItem>
-            <MudItem xs="12" md="6">
-                <MudDatePicker Label="Data Final" Format="dd/MM/yyyy" />
-            </MudItem>
-            <MudItem xs="12">
-                <MudButton Variant="Variant.Filled" Color="Color.Primary">Gerar Relatório</MudButton>
-            </MudItem>
-        </MudGrid>
-    </MudPaper>
     <MudDataGrid T="OrcamentoResponseViewModel" Items="_orcamentos" Loading="_loading" Hover="true" Bordered="true" SortMode="SortMode.Single" Striped="true" Filterable="true" EditMode="DataGridEditMode.Form" ReadOnly="false">
         <Columns>
             <PropertyColumn Property="x => x.NomeUsuario" Title="Usuário" Editable="false" />
@@ -23,7 +15,8 @@
             <PropertyColumn Property="x => x.ValorLimite" Title="Valor Limite" Editable="true" Required="true" />
             <PropertyColumn Property="x => 0.00" Title="Valor Gasto" Editable="false" Required="false" />
         </Columns>
-
+        
     </MudDataGrid>
 </MudContainer>
+
 
